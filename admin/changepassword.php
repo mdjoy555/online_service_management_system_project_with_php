@@ -27,8 +27,10 @@
         }
         else
         {
-            $apassword = md5($jo=$_POST['aPassword']);
-            $acpassword = md5($jj=$_POST['acPassword']);
+            $jo=$_POST['aPassword'];
+            $jj=$_POST['acPassword'];
+            $apassword = md5($jo);
+            $acpassword = md5($jj);
             
             if($jo==$jj)
             {
