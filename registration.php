@@ -19,28 +19,6 @@
             $rpassword = md5($jo=$_POST['rPassword']);
             $rcpassword = md5($jj=$_POST['rcPassword']);
             
-            #echo $rname;
-            #echo $remail;
-            #echo $rpassword;
-            #echo $j;
-            #echo $rname, $remail, $rpassword, $j;
-            #echo $rname," ",$remail," ",
-            #     $rpassword," ",$j;
-            #echo $rname , "<br>";
-            #echo $remail , "<br>";
-            #echo $rpassword , "<br>";
-            #echo $j , "<br>";
-            #echo $rname,"<br>",$remail,
-            #     "<br>",$rpassword,"<br>",$j,"<br>";
-            #for($i=0;$i<strlen($jo);$i++)
-            #{
-            #    echo $jo[$i];
-            #}
-            #echo $jo;
-            #echo "<br>";
-            #echo strlen($jo);
-            #echo "<br>";
-
             $sql = "SELECT requester_email FROM sign_up
                     WHERE requester_email='".$remail."'";
             
@@ -57,66 +35,6 @@
                         mt-2 role="alert">The length of
                         password can not be less than
                         8</div>';
-            }
-            else if($j>=8)
-            {
-                $count=0;
-                $count2=0;
-                $count3=0;
-                $count4=0;
-                for($i=0;$i<strlen($jo);$i++)
-                {
-                    if($jo[$i]>='A' && $jo[$i]<='Z')
-                    {
-                        $count++;
-                    }
-                    if($jo[$i]>='a' && $jo[$i]<='z')
-                    {
-                        $count2++;
-                    }
-                    if($jo[$i]>='0' && $jo[$i]<='9')
-                    {
-                        $count3++;
-                    }
-                    if($jo[$i]=='!' || $jo[$i]=='@'
-                        || $jo[$i]=='#' || $jo[$i]=='$'
-                        || $jo[$i]=='%' || $jo[$i]=='^'
-                        || $jo[$i]=='*' || $jo[$i]=='('
-                        || $jo[$i]==')' || $jo[$i]=='_'
-                        || $jo[$i]=='+' || $jo[$i]=='{'
-                        || $jo[$i]=='}' || $jo[$i]=='['
-                        || $jo[$i]==']' || $jo[$i]==';'
-                        || $jo[$i]==':' || $jo[$i]=='\\'
-                        || $jo[$i]=='|' || $jo[$i]==','
-                        || $jo[$i]=='<' || $jo[$i]=='.'
-                        || $jo[$i]=='>' || $jo[$i]=='/'
-                        || $jo[$i]=='?')
-                    {
-                        $count4++;
-                    }
-                }
-                if($count!=0 && $count2!=0
-                    && $count3!=0 && $count4!=0)
-                {
-                    if($jo==$jj)
-                    {
-                        goto end;
-                    }
-                    else
-                    {
-                        $joy = '<div class="alert alert-warning
-                        mt-2 role="alert">The cofirm password does
-                        not match with the the previous
-                        password</div>';
-                    }
-                }
-                else
-                {     
-                    $joy = '<div class="alert alert-warning
-                    mt-2 role="alert">The password must have
-                    atleast a uppercase and a lowercase letter
-                    and a digit and a numerical sign</div>';
-                }
             }
             else
             {
