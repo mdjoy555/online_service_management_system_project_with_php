@@ -16,8 +16,10 @@
         {    
             $rname = $_POST['rName'];
             $remail = $_POST['rEmail'];
-            $rpassword = md5($jo=$_POST['rPassword']);
-            $rcpassword = md5($jj=$_POST['rcPassword']);
+            $jo=$_POST['rPassword'];
+            $jj=$_POST['rcPassword'];
+            $rpassword = md5($jo);
+            $rcpassword = md5($jj);
             
             $sql = "SELECT requester_email FROM sign_up
                     WHERE requester_email='".$remail."'";
