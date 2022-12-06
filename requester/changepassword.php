@@ -25,8 +25,10 @@
         }
         else
         {
-            $rpassword = md5($jo=$_POST['rPassword']);
-            $rcpassword = md5($jj=$_POST['rcPassword']);
+            $jo=$_POST['rPassword'];
+            $jj=$_POST['rcPassword'];
+            $rpassword = md5($jo);
+            $rcpassword = md5($jj);
             
             $j = strlen($jo);
             
@@ -37,69 +39,15 @@
                         password can not be less than
                         8</div>';
             }
-            else if($j>=8)
+            if($jo!=$jj)
             {
-                $count=0;
-                $count2=0;
-                $count3=0;
-                $count4=0;
-                for($i=0;$i<strlen($jo);$i++)
-                {
-                    if($jo[$i]>='A' && $jo[$i]<='Z')
-                    {
-                        $count++;
-                    }
-                    if($jo[$i]>='a' && $jo[$i]<='z')
-                    {
-                        $count2++;
-                    }
-                    if($jo[$i]>='0' && $jo[$i]<='9')
-                    {
-                        $count3++;
-                    }
-                    if($jo[$i]=='!' || $jo[$i]=='@'
-                        || $jo[$i]=='#' || $jo[$i]=='$'
-                        || $jo[$i]=='%' || $jo[$i]=='^'
-                        || $jo[$i]=='*' || $jo[$i]=='('
-                        || $jo[$i]==')' || $jo[$i]=='_'
-                        || $jo[$i]=='+' || $jo[$i]=='{'
-                        || $jo[$i]=='}' || $jo[$i]=='['
-                        || $jo[$i]==']' || $jo[$i]==';'
-                        || $jo[$i]==':' || $jo[$i]=='\\'
-                        || $jo[$i]=='|' || $jo[$i]==','
-                        || $jo[$i]=='<' || $jo[$i]=='.'
-                        || $jo[$i]=='>' || $jo[$i]=='/'
-                        || $jo[$i]=='?')
-                    {
-                        $count4++;
-                    }
-                }
-                if($count!=0 && $count2!=0
-                    && $count3!=0 && $count4!=0)
-                {
-                    if($jo==$jj)
-                        {
-                            goto end;
-                        }
-                        else
-                        {
-                            $joy = '<div class="alert alert-warning
-                            mt-2 role="alert">The confirm password
-                            does not match with the new
-                            password</div>';
-                        }
-                }
-                else
-                {     
-                    $joy = '<div class="alert alert-warning
-                    mt-2 role="alert">The password must have
-                    atleast a uppercase and a lowercase letter
-                    and a digit and a numerical sign</div>';
-                }
+                $joy = '<div class="alert alert-warning
+                mt-2 role="alert">The confirm password
+                does not match with the new
+                password</div>';
             }
             else
             {
-                end:
                 $sql = "UPDATE sign_up SET
                 requester_password='".$rpassword."'
                 WHERE requester_email='".$rEmail."'";
