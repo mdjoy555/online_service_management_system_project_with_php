@@ -36,16 +36,20 @@
                         password can not be less than
                         8</div>';
             }
+            else if($jo!=$jj)
+            {
+                $joy = '<div class="alert alert-warning
+                mt-2 role="alert">The cofirm password does
+                not match with the the previous
+                password</div>';
+            }
             else
             {
-                end:
                 $str = "INSERT INTO sign_up(requester_name,
                                             requester_email,
                                             requester_password)
                         VALUES('".$rname."','".$remail."',
                                 '".$rpassword."')";
-        
-                #echo $str;
                 if(mysqli_query($conn,$str)) // or we can use $conn->query($str)
                 {
                     $joy = '<div class="alert alert-success
